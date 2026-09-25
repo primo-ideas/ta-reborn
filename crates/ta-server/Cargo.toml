@@ -1,0 +1,12 @@
+[package]
+name = "ta-server"
+description = "WebSocket relay that pairs players and clocks lockstep turns."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+ta-net.workspace = true
+tokio.workspace = true
+tokio-tungstenite.workspace = true
+futures-util.workspace = true

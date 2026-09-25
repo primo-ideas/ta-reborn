@@ -1,0 +1,26 @@
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "Unlicense"
+
+[workspace.dependencies]
+ta-sim = { path = "crates/ta-sim" }
+ta-net = { path = "crates/ta-net" }
+serde = { version = "1", features = ["derive"] }
+postcard = { version = "1.1", features = ["use-std"] }
+bevy = "0.19.1"
+ewebsock = "0.8"
+tokio = { version = "1", features = ["macros", "net", "rt-multi-thread", "sync", "time"] }
+tokio-tungstenite = "0.30"
+futures-util = "0.3"
+
+# Bevy is very slow without optimizations; optimize dependencies even in dev.
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3

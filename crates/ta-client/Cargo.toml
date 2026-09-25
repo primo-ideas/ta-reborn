@@ -1,0 +1,19 @@
+[package]
+name = "ta-client"
+description = "Bevy 3D client (native and web)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+ta-sim.workspace = true
+ta-net.workspace = true
+bevy.workspace = true
+ewebsock.workspace = true
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+web-sys = { version = "0.3", features = ["Location", "Window"] }
+
+[lints.clippy]
+# Bevy systems receive everything they use as parameters.
+too_many_arguments = "allow"
